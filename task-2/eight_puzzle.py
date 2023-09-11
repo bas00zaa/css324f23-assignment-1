@@ -51,4 +51,16 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
-    return 0
+    goal = (1,2,3,4,5,6,7,8,0)
+    h_value = 0
+    
+    for tile in range (1,9):
+        tile_position = board.index(tile)
+        goal_position = goal.index(tile)
+        
+        tile_row, tile_col = tile_position // 3, tile_position % 3
+        goal_row, goal_col = goal_position // 3, goal_position % 3
+        
+        h_value += abs(tile_row -goal_row) + abs(tile_col - goal_col)
+    
+    return h_value
